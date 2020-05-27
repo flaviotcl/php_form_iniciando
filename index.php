@@ -2,31 +2,24 @@
 
 if($_SERVER['REQUEST_METHOD'] == "POST")
 {
-    
-   
-   $idade = (isset($_POST['idade'] ) ) ? $_POST['idade']: null;
-   
-   if( is_null($idade) || $idade === '' )
-   {
-       die('Vc não informou sua idade.');
-   }
-   
-   $idade = (int)$_POST['idade'];
-
-   if( $idade < 18)
-   {
-        die("Menor de 18 anos !");
-   }
-
-   echo "Ok, sua idade é ".$idade;
-
-
-   $idade_string = (string)$idade;
-   
-   var_dump($idade_string, $idade);
-
-   exit;
+    $nome = $_POST['nome'] ?? null;    
+    $nome = trim($nome);
+    $nome =  stripslashes($nome);
+    $nome = htmlspecialchars($nome, ENT_COMPAT); // PADRÃO DE COMPORTAMENTO.
+    echo $nome;
+    exit;
 }
+/***
+ *  A function htmlspecialchars() converte os seguintes caracteres:
+ *  < => &lt less than
+ *  > => &gt
+ *  " => &quot
+ *  ' => &#039
+ *  & => &amp
+ *  ENT_COMPAT => Este parâmetro converte apenas as aspas duplas, ignorando as Simples.
+ *  ENT_NOQUOTES => Este parâmetro converte todos (<,>,&) MENOS as aspas simples e duplas.
+ *  ENT_QUOTES => Este parâmetro converte TODOS!
+ ***/ 
 
 ?>
 <!DOCTYPE html>
@@ -37,10 +30,9 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
     <title>Document</title>
 </head>
 <body>
-    <form action="" method="POST" enctype="multipart/form-data">
-        <input type="text" name="idade" placeholder="idade"><br>       
+    <form action="" method="POST">
+        <input type="text" name="nome" id="">
         <input type="submit" value="Enviar">
-    </form>
-
+    </form>    
 </body>
 </html>
