@@ -2,6 +2,15 @@
 
 if($_SERVER['REQUEST_METHOD'] == "POST")
 {
+    
+   
+   $idade = (isset($_POST['idade'] ) ) ? $_POST['idade']: null;
+   
+   if( is_null($idade) || $idade === '' )
+   {
+       die('Vc não informou sua idade.');
+   }
+   
    $idade = (int)$_POST['idade'];
 
    if( $idade < 18)
