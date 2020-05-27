@@ -1,3 +1,13 @@
+<?php
+
+if($_SERVER['REQUEST_METHOD'] == "POST")
+{
+    echo $_POST['nome'];
+    exit;
+}
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,5 +22,6 @@
     </form>
 
     <a href="/index.php/?nome=Flavio">NOME</a>
+    <p>O <?php if($_GET['nome']){ echo $_GET['nome'];} ?> clicou no Link acima.</p>
 </body>
 </html>
