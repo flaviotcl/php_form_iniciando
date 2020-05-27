@@ -2,12 +2,22 @@
 
 if($_SERVER['REQUEST_METHOD'] == "POST")
 {
-    //echo $_POST['nome'];
-    var_dump($_POST);
-    var_dump($_FILES);
-    exit;
-}
+   $idade = (int)$_POST['idade'];
 
+   if( $idade < 18)
+   {
+        die("Menor de 18 anos !");
+   }
+
+   echo "Ok, sua idade é ".$idade;
+
+
+   $idade_string = (string)$idade;
+   
+   var_dump($idade_string, $idade);
+
+   exit;
+}
 
 ?>
 <!DOCTYPE html>
@@ -19,25 +29,9 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
 </head>
 <body>
     <form action="" method="POST" enctype="multipart/form-data">
-        <input type="text" name="nome" id=""><br>
-        <input type="email" name="email" id=""><br>
-        <input type="color" name="color" id=""><br>
-        <input type="date" name="date" id=""><br>
-        <input type="datetime" name="datetime" id=""><br>
-        <input type="file" name="file" id=""><br>
-        <input type="number" name="number" id=""><br>
-
-        <br>
-        <input type="radio" name="sexo" value="Masculino">
-        <input type="radio" name="sexo" value="Feminino">
-
-        <br>
-        <input type="checkbox" name="revista" value="Info">
-
+        <input type="text" name="idade" placeholder="idade"><br>       
         <input type="submit" value="Enviar">
     </form>
 
-    <a href="/index.php/?nome=Flavio">NOME</a>
-    <p>O <?php if($_GET['nome']){ echo $_GET['nome'];} ?> clicou no Link acima.</p>
 </body>
 </html>
