@@ -1,17 +1,18 @@
 <?php
 
+
+/***
+ *  isset => O Campo existe  ? 
+ *  empty => O Campo existe e esta vazio ? 
+ ***/
+
 if($_SERVER['REQUEST_METHOD'] == "POST")
 {
-   extract($_POST)     ;
-   var_dump($nome, $idade);
-
-   $data = compact('nome','idade', '_POST');
-   var_dump($data);
-   exit;  
-
+    var_dump( isset($_POST['nome'])); // TRUE
+    var_dump( empty($_POST['nome']));
+   
+    exit;
 }
-
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -23,8 +24,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
 <body>
     <form action="" method="POST">
         <input type="text" name="nome" id="">
-        <input type="text" name="idade" id="">
         <input type="submit" value="Enviar">
-    </form>
+    </form>    
 </body>
 </html>
